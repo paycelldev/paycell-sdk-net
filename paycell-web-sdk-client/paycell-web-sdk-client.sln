@@ -1,0 +1,25 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio 15
+VisualStudioVersion = 15.0.28307.136
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "paycell-web-sdk-client", "paycell-web-sdk-client\paycell-web-sdk-client.csproj", "{13F6E38F-6336-4C63-9F4F-6E8A8E9B8B41}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{13F6E38F-6336-4C63-9F4F-6E8A8E9B8B41}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{13F6E38F-6336-4C63-9F4F-6E8A8E9B8B41}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{13F6E38F-6336-4C63-9F4F-6E8A8E9B8B41}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{13F6E38F-6336-4C63-9F4F-6E8A8E9B8B41}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {CCF371E2-4D42-42AA-A1DD-71097841B222}
+	EndGlobalSection
+EndGlobal

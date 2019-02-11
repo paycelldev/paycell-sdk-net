@@ -1,0 +1,175 @@
+﻿@model Tuple<paycell_web_sdk_client.Models.dto.MetaDataViewDto, paycell_web_sdk_client.Models.dto.QueryStatuViewDto, paycell_web_sdk_client.Models.dto.PaymentViewDto>
+@{
+    ViewBag.Title = "CheckStatu";
+
+    var metaDataItem = Model.Item1;
+    var queryStatuItem = Model.Item2;
+    var paymentItem = Model.Item3;
+
+    TempData["metaDataItem"] = metaDataItem;
+    TempData["queryStatuItem"] = queryStatuItem;
+    TempData["paymentItem"] = paymentItem;
+
+}
+
+@if (ViewBag.message != null)
+{
+    <div id="check-alert" class="alert alert-warning" role="alert">
+        @ViewBag.message
+    </div>
+} else if (ViewBag.successMessage != null)
+{
+    <div id="check-alert" class="alert alert-success" role="alert">
+        @ViewBag.successMessage
+    </div>
+}
+
+<div class="jumbotron">
+
+
+    <table cellpadding="0" cellspacing="0">
+        <tr>
+            <th colspan="2" align="center">SDK</th>
+        </tr>
+
+        @Html.Hidden(metaDataItem.ClientIPAddress)
+
+        <tr>
+            <td>PaymentReferenceNumber: </td>
+            <td>
+                @paymentItem.PaymentReferenceNumber
+            </td>
+        </tr>
+
+
+        <tr>
+            <td>Msisdn: </td>
+            <td>
+                @queryStatuItem.Msisdn
+            </td>
+        </tr>
+
+        <tr>
+            <td>Amount: </td>
+            <td>
+                @queryStatuItem.Amount
+            </td>
+        </tr>
+
+        <tr>
+            <td>Currency: </td>
+            <td>
+                @queryStatuItem.Currency
+            </td>
+        </tr>
+
+        <tr>
+            <td>InstallmentCount: </td>
+            <td>
+                @queryStatuItem.InstallmentCount
+            </td>
+        </tr>
+
+        <tr>
+            <td>PaymentSecurity: </td>
+            <td>
+                @queryStatuItem.PaymentSecurity
+            </td>
+        </tr>
+
+        <tr>
+            <td>PaymentDate: </td>
+            <td>
+                @queryStatuItem.PaymentDate
+            </td>
+        </tr>
+
+        <tr>
+            <td>ReconcilationDate: </td>
+            <td>
+                @queryStatuItem.ReconcilationDate
+            </td>
+        </tr>
+
+        <tr>
+            <td>AcquirerbankCode: </td>
+            <td>
+                @queryStatuItem.AcquirerbankCode
+            </td>
+        </tr>
+
+        <tr>
+            <td>IssuerBankCode: </td>
+            <td>
+                @queryStatuItem.IssuerBankCode
+            </td>
+        </tr>
+
+        <tr>
+            <td>OrderId: </td>
+            <td>
+                @queryStatuItem.OrderId
+            </td>
+        </tr>
+
+        <tr>
+            <td>ExtraParameters: </td>
+            <td>
+                @queryStatuItem.ExtraParameters
+            </td>
+        </tr>
+
+        <tr>
+            <td>Status: </td>
+            <td>
+                @queryStatuItem.Status
+            </td>
+        </tr>
+
+        <tr>
+            <td>StatusExplanation: </td>
+            <td>
+                @queryStatuItem.StatusExplanation
+            </td>
+        </tr>
+
+        <tr>
+            <td>PaymentMethodId: </td>
+            <td>
+                @queryStatuItem.PaymentMethodId
+            </td>
+        </tr>
+
+        <tr>
+            <td>PaymentMethodNumber: </td>
+            <td>
+                @queryStatuItem.PaymentMethodNumber
+            </td>
+        </tr>
+
+        <tr>
+            <td>PaymentMethodType: </td>
+            <td>
+                @queryStatuItem.PaymentMethodType
+            </td>
+        </tr>
+    </table>
+
+    <div><button>@Html.ActionLink("Reverse", "Reverse", "Home")</button></div>
+    <div>
+        @using (Html.BeginForm("Refund", "Home"))
+        {
+            <input type="text" name="refundAmount" />
+            <input type="submit" value="Refund">
+        }
+    </div>
+
+
+</div>
+
+<script type="text/javascript">
+
+</script>
+
+<div class="row"></div>
+

@@ -1,0 +1,110 @@
+﻿@model paycell_web_sdk_client.Models.dto.IndexPageViewDto
+
+<div class="jumbotron">
+
+    @using (Html.BeginForm("Index", "Home", FormMethod.Post))
+    {
+        @Html.HiddenFor(m => m.MetaData.ApplicationName);
+        @Html.HiddenFor(m => m.MetaData.ClientIPAddress);
+        @Html.HiddenFor(m => m.MetaData.MerchantCode);
+        @Html.HiddenFor(m => m.MetaData.TerminalCode);
+        @Html.HiddenFor(m => m.PaymentView.PaymentReferenceNumber);
+    <table id="indexpage" cellpadding="1" cellspacing="1" style="width:100%">
+        <tr>
+            <th style="min-width: 200px!important">SDK</th>
+            <th></th>
+        </tr>
+        <tr>
+            <td>Host Account: </td>
+            <td>
+                @Html.TextBoxFor(m => m.MetaData.HostAccount)
+            </td>
+        </tr>
+        <tr>
+            <td>Language: </td>
+            <td>
+                @Html.TextBoxFor(m => m.MetaData.Language)
+            </td>
+        </tr>
+        <tr>
+            <td>Msisdn: </td>
+            <td>
+                @Html.TextBoxFor(m => m.MetaData.Msisdn)
+            </td>
+        </tr>
+        <tr>
+            <td>Amount: </td>
+            <td>
+                @Html.TextBoxFor(m => m.PaymentView.Amount)
+            </td>
+        </tr>
+        <tr>
+            <td>Currency: </td>
+            <td>
+                @Html.TextBoxFor(m => m.PaymentView.Currency)
+            </td>
+        </tr>
+        <tr>
+            <td>PaymentSecurity: </td>
+            <td>
+                @Html.TextBoxFor(m => m.PaymentView.PaymentSecurity)
+            </td>
+        </tr>
+        <tr>
+            <td>Installments: </td>
+            <td>
+                <table id="installmentplansDto" class="table table-striped table-bordered" style="width:100%">
+                    <thead>
+                        <tr>
+                            <th>Id</th>
+                            <th>Payment Method Type</th>
+                            <th>Amount</th>
+                            <th>Card Brand</th>
+                            <th>Count</th>
+                            <th><a>@Html.ActionLink("New", "New", "Home")</a></th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        @{int index = 1;}
+                        @for (var i = 0; i < ViewData.Model.PaymentView.InstalmentPlans.Count; i++)
+                        {
+                            <tr>
+                                <td>@index</td>
+                                <td>@Html.TextBoxFor(m => m.PaymentView.InstalmentPlans[i].PaymentMethodType)</td>
+                                <td>@Html.TextBoxFor(m => m.PaymentView.InstalmentPlans[i].Amount)</td>
+                                <td>@Html.TextBoxFor(m => m.PaymentView.InstalmentPlans[i].CardBrand)</td>
+                                <td>@Html.TextBoxFor(m => m.PaymentView.InstalmentPlans[i].Count)</td>
+                                <td><a>@Html.ActionLink("Delete", "Delete", "Home", new { id = i }, null)</a></td>
+                            </tr>
+                            index++;
+                        }
+                    </tbody>
+                </table>
+            </td>
+        </tr>
+        <tr>
+            <td>Payment Reference Number : </td>
+            <td>
+                @ViewData.Model.PaymentView.PaymentReferenceNumber
+                <button style="width:100px;" >@Html.ActionLink("CheckStatus", "CheckStatus", "Home", new { paymentReferenceNumber = @ViewData.Model.PaymentView.PaymentReferenceNumber }, null)</button>
+            </td>
+        </tr>
+        <tr>
+            <td>Validation Tracking Url : </td>
+            <td>
+                <a href="@ViewData.Model.PaymentUrl" target="_blank">@ViewData.Model.PaymentUrl</a>
+            </td>
+        </tr>
+        <tr>
+            <td></td>
+            <td><input type="submit" style="width:100px;" value="Init" /></td>
+        </tr>
+    </table>
+
+        TempData["temp"] = ViewData.Model;
+
+    }
+
+</div>
+
+<div class="row"></div>
